@@ -59,6 +59,8 @@ cp -f "${PWD}"/src/tz.py "${PWD}"/build/
 cp -f "${PWD}"/src/financials_ft.py "${PWD}"/build/
 cp -f "${PWD}"/src/financials_yahoo.py "${PWD}"/build/
 cp -f "${PWD}"/src/financials_coinbase.py "${PWD}"/build/
+# Support for Investing.com
+cp -f "${PWD}"/src/financials_investing_com.py "${PWD}"/build/
 
 # this copies python modules dateutil, pytz, pyparsing to extension so it doesn't have to be installed by user
 
@@ -74,6 +76,45 @@ rm $TMPFILE
 
 wget "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl" -O $TMPFILE
 unzip $TMPFILE pyparsing.py -d "${PWD}"/build/
+rm $TMPFILE
+
+# Support for Investing.com
+
+wget "https://pypi.debian.net/investpy/investpy-1.0.8.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv investpy-1.0.8 "${PWD}"/build/
+rm $TMPFILE
+
+# [NOTE] Might need other dependencies: Unidecode, tzdata, six, numpy, lxml, pandas
+
+wget "https://pypi.debian.net/Unidecode/Unidecode-1.3.8.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv Unidecode-1.3.8 "${PWD}"/build/
+rm $TMPFILE
+
+wget "https://pypi.debian.net/tzdata/tzdata-2024.1.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv tzdata-2024.1 "${PWD}"/build/
+rm $TMPFILE
+
+wget "https://pypi.debian.net/six/six-1.9.0.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv six-1.9.0 "${PWD}"/build/
+rm $TMPFILE
+
+wget "https://pypi.debian.net/numpy/numpy-1.9.3.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv numpy-1.9.3 "${PWD}"/build/
+rm $TMPFILE
+
+wget "https://pypi.debian.net/lxml/lxml-5.2.2.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv lxml-5.2.2 "${PWD}"/build/
+rm $TMPFILE
+
+wget "https://pypi.debian.net/pandas/pandas-2.2.2.tar.gz" -O $TMPFILE
+tar -xf $TMPFILE
+mv pandas-2.2.2 "${PWD}"/build/
 rm $TMPFILE
 
 # Windows LibreOffice 7.1 Python is missing this...
